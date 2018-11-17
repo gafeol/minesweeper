@@ -1,0 +1,11 @@
+.cell{
+    background-color: #FFFFFF
+}
+
+.cell-clicked{
+    background-color: lightskyblue
+}
+
+.cell-marked{
+    background-color: red
+}
