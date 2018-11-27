@@ -1,3 +1,13 @@
+#div-bomb{
+    padding: 1px
+}
+
+img{
+    max-width:100%;
+    max-height:100%;
+}
+
+
 .cell{
     background-color: #FFFFFF
 }
@@ -6,6 +16,6 @@
     background-color: lightskyblue
 }
 
-.cell-marked{
+.cell-flagged{
     background-color: red
 }

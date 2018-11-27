@@ -1,8 +1,27 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: 30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
-    grid-template-rows:    30px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
+    display: inline-grid;
+    grid-template-columns: 30px 30px 30px 30px 30px;
+    grid-template-rows:    30px 30px 30px 30px 30px;
     grid-gap: 10px;
-    background-color: #505050;
+    background-color: #aaaaaa;
     padding: 10px;
+    margin: auto;
+}
+.grid-disabled {
+    display: inline-grid;
+    grid-template-columns: 30px 30px 30px 30px 30px;
+    grid-template-rows:    30px 30px 30px 30px 30px;
+    grid-gap: 10px;
+    background-color: #aaaaaa;
+    padding: 10px;
+    pointer-events: none;
+    margin: auto;
+}
+
+#youLost {
+    color: lightcoral;
+}
+
+#youWon {
+    color: lightgreen;
 }

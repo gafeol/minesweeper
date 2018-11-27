@@ -11,7 +11,7 @@ function generateBomb(){
 class Board extends Component {
     constructor() {
         super();
-        let n = 10, count = 0;
+        let n = 5, count = 0;
         let table = new Array(n);
         for (let i = 0;i < n;i++){
             table[i] = new Array(n);
@@ -39,8 +39,34 @@ class Board extends Component {
         this.state = {
             grid_size: n,
             grid: table,
-            bomb_count: count
+            bomb_count: count,
+            cell_count: n*n - count,
+            lost: false,
+            won: false
         }
+
+        this.updateBombCount = this.updateBombCount.bind(this)
+        this.explodeBomb = this.explodeBomb.bind(this)
+        this.updateCellCount = this.updateCellCount.bind(this)
+        this.checkWin = this.checkWin.bind(this)
+    }
+
+    updateBombCount(dlt){
+        this.setState({bomb_count: this.state.bomb_count+dlt}, this.checkWin)
+    }
+
+    explodeBomb(){
+        if(this.state.lost === false)
+            this.setState({ lost: true })
+    }
+
+    updateCellCount(){
+       this.setState({cell_count: this.state.cell_count-1}, this.checkWin) 
+    }
+
+    checkWin(){
+        if(this.state.lost === false && this.state.won === false && this.state.cell_count === 0 && this.state.bomb_count === 0)
+            this.setState({won: true})
     }
 
     createBoard() {
@@ -49,7 +75,7 @@ class Board extends Component {
         for (let i = 0; i < grid_size; i++) {
             for(let j = 0;j < grid_size;j++){
                 table.push(
-                    <Cell value={grid[i][j]} />
+                    <Cell value={grid[i][j]} updateCellCount={this.updateCellCount} updateBomb={this.updateBombCount} explodeBomb={this.explodeBomb}/>
                 )
             }
         }
@@ -57,10 +83,17 @@ class Board extends Component {
     }
 
     render() {
+
         return (
             <div> 
                 <h4> Bombs left: {this.state.bomb_count} </h4>
-                <div className="grid-container">
+                {this.state.lost && 
+                    <h1 align="center" id="youLost"> You lost! </h1>
+                }
+                {this.state.won && 
+                    <h1 align="center" id="youWon"> You Won! </h1>
+                }
+                <div className={"grid-"+((this.state.lost || this.state.won) ? "disabled" : "container")}>
                     {this.createBoard()}
                 </div>
             </div>
