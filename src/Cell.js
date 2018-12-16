@@ -12,7 +12,7 @@ class Cell extends Component {
         super(props);
         this.state = {
             value: this.props.value,
-            cellType: 0
+            cellType: this.props.type
         }
 
         this.clickType = this.clickType.bind(this)
@@ -37,10 +37,10 @@ class Cell extends Component {
         }
 
         // Flagging bomb
-        if(this.state.cellType === init && newCellType == flagged)
+        if(this.state.cellType === init && newCellType === flagged)
             this.props.updateBomb(-1)
         // Unflagging bomb
-        if(this.state.cellType === flagged && newCellType == init)
+        if(this.state.cellType === flagged && newCellType === init)
             this.props.updateBomb(1)
 
         if(newCellType === visible)
@@ -51,10 +51,11 @@ class Cell extends Component {
 
     render() {
         const {value, cellType} = this.state
-        if (cellType == init)
+
+        if (cellType === init)
             return <button className="cell" onContextMenu={(event) => this.clickType(event)} onClick={(event) => this.clickType(event)} > </button>
-        else if(cellType == visible){
-            if(value == -1){
+        else if(cellType === visible){
+            if(value === -1){
                 this.props.explodeBomb();
                 return <div id="div-bomb"><img src={bomb} alt="bomb" /> </div>
             }
