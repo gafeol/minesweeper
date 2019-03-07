@@ -10,7 +10,7 @@ class App extends Component {
         <h1 class='text-center'> Minesweeper </h1>
         <Board />
 		<div class='d-inline text-center'>
-			<a class='btn btn-outline-danger' href='/'> RESTART </a>
+			<a class='btn btn-outline-danger' href='./'> RESTART </a>
 		</div>
 
 		<h3 class='mt-5'> Rules: </h3>
@@ -24,12 +24,10 @@ class App extends Component {
 			In order to win the game you must reveal all <span class='safe'> safe </span> cells and <span class='flag'> flag </span> all cells containing bombs.
 
 		</p>
-
 		<p>
 			The map is generated randomly at the moment you make your first click.
 			Don't panic, your first click is always safe!
 		</p>
-
 		<p>
 			Good Luck!
 		</p>
