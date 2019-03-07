@@ -4,7 +4,7 @@ import DummyCell from './DummyCell.js'
 import './board.css'
 
 function generateBomb(){
-    let values = [0, 0, 0, 0, 0, 0, -1];
+    let values = [0, 0, 0, 0, 0, 0, -1]; // 1/7 chance de criar bomba
     var idx = Math.floor(Math.random()*values.length);
     return values[idx];
 }
@@ -15,7 +15,7 @@ class Board extends Component {
         super();
 
         this.state = {
-            grid_size: 5,
+            grid_size: 8,
             grid: [],
             bomb_count: 0,
             cell_count: 0,
@@ -92,10 +92,10 @@ class Board extends Component {
     generateBoard(click_i, click_j){
         let n = this.state.grid_size, count = 0;
         let table = new Array(n);
-        console.log("GenerateBoard", click_i, click_j)
+    	//console.log("GenerateBoard", click_i, click_j)
         let neigh = this.neighbors(click_i, click_j)
         neigh.push({i:click_i, j:click_j})
-        console.log("neigh", neigh)
+        //console.log("neigh", neigh)
         for (let i = 0;i < n;i++){
             table[i] = new Array(n);
             for (let j = 0;j < n;j++){
@@ -159,7 +159,7 @@ class Board extends Component {
     render() {
         return (
             <div> 
-                <h4> Bombs left: {this.state.bomb_count} </h4>
+                {!this.state.first_click && <h4 class='text-right'> Bombs left: {this.state.bomb_count} </h4>}
                 {this.state.lost && 
                     <h1 align="center" id="youLost"> You lost! </h1>
                 }

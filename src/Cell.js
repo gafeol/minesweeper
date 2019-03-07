@@ -43,8 +43,11 @@ class Cell extends Component {
         if(this.state.cellType === flagged && newCellType === init)
             this.props.updateBomb(1)
 
-        if(newCellType === visible)
+        if(newCellType === visible){
+			if(this.state.cellType === flagged)
+				this.props.updateBomb(1)
             this.props.updateCellCount()
+		}
 
         this.setState({ cellType: newCellType })
     } 

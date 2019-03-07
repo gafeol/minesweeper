@@ -5,3 +5,15 @@ div{
   align-content: center;
   padding: 10px
 }
+
+.flag{
+	color: red;
+}
+
+.safe{
+	color: lightskyblue;
+}
+
+p{
+	font-size: 1.25rem;
+}
