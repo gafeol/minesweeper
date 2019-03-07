@@ -10,7 +10,7 @@ class App extends Component {
         <h1 class='text-center'> Minesweeper </h1>
         <Board />
 		<div class='d-inline text-center'>
-			<a class='btn btn-outline-warning' href='/'> RESTART </a>
+			<a class='btn btn-outline-danger' href='/'> RESTART </a>
 		</div>
 
 		<h3 class='mt-5'> Rules: </h3>
