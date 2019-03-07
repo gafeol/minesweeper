@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/minesweeper/precache-manifest.9111e50e74edb96d5f6245c0cfdc9e70.js"
+  "/minesweeper/precache-manifest.a5846ee3a2b5397939bf35c9104d3e75.js"
 );
 
 workbox.clientsClaim();
